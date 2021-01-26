@@ -4,3 +4,23 @@ input#new-course-title, input#new-course-title::placeholder {
     font-weight: bolder;
     color: aliceblue;
 }
+
+.wbdv-course-manager-bar {
+    z-index: 1;
+    width: 100%;
+}
+
+.wbdv-course-list {
+    padding-top: 65px;
+    box-shadow: 0 4px 4px 0 white, 0 4px 4px 0 white;
+    border: 1px solid gainsboro;
+    background-color: white;
+}
+
+#course-list-heading {
+    font-size: large;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;    
+}

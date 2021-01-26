@@ -12,8 +12,7 @@
     <title>Course Manager</title>
 </head>
 <body>
-    
-  	<nav class="navbar navbar-dark bg-primary justify-content-start">
+  	<nav class="navbar navbar-dark bg-primary justify-content-start position-fixed wbdv-course-manager-bar">
 		<span class="navbar-brand w-auto">
             <button class="btn btn-link btn-sm" type="button">
                 <i class="fas fa-align-justify fa-2x" style="color:aliceblue""></i>
@@ -30,9 +29,27 @@
              </div>
          </form>
     </nav>
-    <div class="container">
-        
+    <div class="container-fulid wbdv-course-list">
+        <div class="row" id="course-list-heading">
+            <div class="col-4">Title</div>
+            <div class="col-2">Owned By</div>
+            <div class="col-2">Last Modified</div>
+            <div class="col-2">
+                <i class="fas fa-grip-horizontal"></i>
+            </div>
+            <div class="col-2">
+                <i class="fas fa-sort-alpha-down"></i>
+            </div>
+        </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">Title</div>
+            <div class="col-2">Owned By</div>
+            <div class="col-2">Last Modified</div>
+        </div>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
