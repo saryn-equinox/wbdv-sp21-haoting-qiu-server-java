@@ -32,22 +32,36 @@
     <div class="container-fulid wbdv-course-list">
         <div class="row" id="course-list-heading">
             <div class="col-4">Title</div>
-            <div class="col-2">Owned By</div>
-            <div class="col-2">Last Modified</div>
-            <div class="col-2">
+            <!-- Show on sm -->
+            <div class="col-2 d-none d-sm-inline">Owned By</div>
+            <!-- Show on md -->
+            <div class="col-2 d-none d-md-inline">Last Modified</div>
+            <!-- Show on lg -->
+            <div class="col-1 d-none d-lg-inline">
                 <i class="fas fa-grip-horizontal"></i>
             </div>
-            <div class="col-2">
+            <div class="col-1 d-none d-lg-inline">
                 <i class="fas fa-sort-alpha-down"></i>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-4">Title</div>
-            <div class="col-2">Owned By</div>
-            <div class="col-2">Last Modified</div>
+        <div class="row wbdv-course-record">
+            <div class="col-4">
+                <a href="#">
+                    <i class="fas fa-file"></i>
+                    CS5610 Web Development
+                </a>
+            </div>
+            <div class="col-3 d-none d-sm-inline">Jose</div>
+            <div class="col-2 d-none d-md-inline">2021-01-25</div>
+            <div class="col-auto ml-auto float-right">
+                <button class="btn">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
         </div>
+
     </div>
 
 

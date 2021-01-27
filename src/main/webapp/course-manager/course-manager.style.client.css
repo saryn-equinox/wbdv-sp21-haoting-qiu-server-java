@@ -1,3 +1,6 @@
+body {
+    background-color: rgb(241, 239, 239);
+}
 input#new-course-title, input#new-course-title::placeholder {
     background-color:rgba(0,0,0,0) !important;
     font-style: italic;
@@ -12,9 +15,19 @@ input#new-course-title, input#new-course-title::placeholder {
 
 .wbdv-course-list {
     padding-top: 65px;
-    box-shadow: 0 4px 4px 0 white, 0 4px 4px 0 white;
+    box-shadow: 0 1px 1px 0  rgb(241, 239, 239), 0 1px 1px 0 rgb(241, 239, 239);
     border: 1px solid gainsboro;
     background-color: white;
+}
+
+.wbdv-course-record {
+    background-color: white;
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+
+.wbdv-course-record .btn {
+    background-color: rgba(0,0,0,0) !important;
 }
 
 #course-list-heading {
@@ -24,3 +37,4 @@ input#new-course-title, input#new-course-title::placeholder {
     padding-bottom: 15px;
     padding-top: 15px;    
 }
+
