@@ -30,6 +30,10 @@ input#new-course-title, input#new-course-title::placeholder {
     background-color: rgba(0,0,0,0) !important;
 }
 
+.fa-align-justify {
+    color:aliceblue;
+}
+
 #course-list-heading {
     font-size: large;
     margin: auto;
