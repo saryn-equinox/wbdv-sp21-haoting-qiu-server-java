@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>User Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./user-admin.style.client.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>User Admin</h1>
+        <div class="row wbdv-navbar">
+            <div class="form-group col">
+                <label for="username" class="col-form-label">Username</label>
+                <input class="form-control wbdv-field wbdv-username" id="username"
+                           placeholder="Username"  type="text">
+            </div>
+            <div class="form-group col">
+                <label for="password" class="col-form-label">Password</label>
+                <input class="form-control wbdv-field wbdv-password" id="password"
+                       placeholder="Password"  type="password">
+            </div>
+            <div class="form-group col">
+                <label for="first-name" class="col-form-label">FirstName</label>
+                <input class="form-control wbdv-field wbdv-first-name" id="first-name"
+                    placeholder="Tom" type="text">
+            </div>
+            <div class="form-group col">
+                <label for="last-name" class="col-form-label">LastName</label>
+                <input class="form-control wbdv-field wbdv-last-name" id="last-name"
+                    placeholder="Jerry" type="text">
+            </div>
+            <div class="form-group col">
+                <label for="role" class="col-form-label">Role</label>
+                <div>
+                    <select class="custom-select wbdv-field wbdv-role" id="role">
+                        <option selected value="Faculty">Faculty</option>
+                        <option value="Student">Student</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col align-self-center">
+                <button type="button" class="btn">
+                    <i class="fa fa-search fa-2x"></i>
+                </button>
+                <button type="button" class="btn">
+                    <i class="fa fa-plus fa-2x"></i>
+                </button>
+                <button type="button" class="btn">
+                    <i class="fa fa-check fa-2x"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="row wbdv-student-record" id="tex">
+            <div class="col">
+                tex
+            </div>
+            <div class="col">
+                Tim
+            </div>
+            <div class="col">
+                Lee
+            </div>
+            <div class="col">
+                Faculty
+            </div>
+            <div class="col align-self-center">
+                <button type="button" class="btn">
+                    <i class="fa fa-times fa-2x"></i>
+                </button>
+                <button type="button" class="btn">
+                    <i class="fa fa-pencil fa-2x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
