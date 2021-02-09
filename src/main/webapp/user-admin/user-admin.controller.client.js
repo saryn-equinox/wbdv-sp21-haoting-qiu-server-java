@@ -6,14 +6,13 @@ let $roleFLd;
 let $tBody;
 let $searchBtn;
 let $createBtn;
-let $updateBtn;
-let $removeBtn;
 let $editBtn;
 let $userRowTemplate;
-let userAdminService = new UserAdminServiceClient();
+let userAdminService;
 
 let selectedUser;
 let users;
+let userById;
 
 /**
  * Create User
@@ -37,6 +36,7 @@ const findAllUsers = () => {
             renderUser(users);
         });
 }
+
 /**
  * Find user by userId
  * @param userId - the id of user
@@ -44,7 +44,7 @@ const findAllUsers = () => {
 const findUserById = (userId) => {
     userAdminService.findUserById(userId)
         .then((data) => {
-            selectedUser = data;
+            userById = data;
         });
 }
 
@@ -83,13 +83,16 @@ const updateUser = (event) => {
         // called updateUser function
         userAdminService.updateUser(selectedUser._id, selectedUser)
             .then((status) => {
-            const idx = users.findIndex(user => user._id === selectedUser._id);
-            users[idx] = selectedUser;
-            renderUser(users);
-        })
+                console.log(status);
+                userAdminService.findAllUsers()
+                    .then((data) => {
+                        users = data;
+                        renderUser(users);
+                    });
+            });
         resetInputs();
     } else
-        console.log("No user selected for update")
+        console.log("No user selected for update");
 }
 
 /**
@@ -116,7 +119,7 @@ const renderUser = (users) => {
     $tBody.empty();
     console.log(`number of users are ${users.length}`);
     for (var i = 0; i < users.length; i++) {
-        let user = users[i];
+        const user = users[i];
         $tBody.prepend(`
             <tr class="wbdv-template wbdv-user wbdv-hidden">
                 <td class="wbdv-username">${user.username}</td>
@@ -130,17 +133,27 @@ const renderUser = (users) => {
                             <i class="fa-2x fa fa-times wbdv-remove-btn" id="${i}"></i>
                         </button>
                         <button type="button" class="btn">
-                            <i class="fa-2x fa fa-pencil wbdv-edit-btn" id="${user._id}"></i>
+                            <i class="fa-2x fa fa-pencil wbdv-modify-btn" id="${user._id}"></i>
                         </button>
                     </span>
                 </td>
             </tr>
         `);
-        $removeBtn = $(".wbdv-remove-btn");
-        $editBtn = $(".wbdv-edit-btn");
-        $removeBtn.click((deleteUser));
-        $editBtn.click(getSelectedUser)
     }
+    $(".wbdv-remove-btn").click(deleteUser);
+    $(".wbdv-modify-btn").click(getSelectedUser)
+}
+
+/**
+ * Reset input fields
+ */
+const resetInputs = () => {
+    $usernameFld.val("");
+    $passwordFld.val("");
+    $lastNameFld.val("");
+    $firstNameFld.val("");
+    $roleFLd.val("Faculty"); // set back to default value
+    selectedUser = null; // reset selected user
 }
 
 /**
@@ -157,14 +170,14 @@ const main = () => {
     $roleFLd = $("#role");
     $tBody = $(".wbdv-tbody");
     $searchBtn = $(".wbdv-search-btn");
-    $updateBtn = $(".wbdv-update-btn");
-    $createBtn = $(".wbdv-create-btn");
-    $removeBtn = $(".wbdv-remove-btn");
     $editBtn = $(".wbdv-edit-btn");
+    $createBtn = $(".wbdv-create-btn");
     $userRowTemplate = $(".wbdv-template");
+    userAdminService = new UserAdminServiceClient();
 
     users = [];
     selectedUser = null;
+    userById = null;
 
     $createBtn.click(() => {
         createUser({
@@ -177,17 +190,8 @@ const main = () => {
         resetInputs();
     });
 
-    $updateBtn.click(updateUser);
+    $editBtn.click(updateUser);
     findAllUsers();
 }
-
-const resetInputs = () => {
-    $usernameFld.val("");
-    $passwordFld.val("");
-    $lastNameFld.val("");
-    $firstNameFld.val("");
-    $roleFLd.val("");
-}
-
 
 $(main);

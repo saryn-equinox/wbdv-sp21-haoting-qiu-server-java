@@ -36,12 +36,12 @@ function UserAdminServiceClient() {
 
     function updateUser(userId, user) {
         return fetch(`${self.url}/${userId}`, {
-            method : "PUT",
-            headers : {
+            method: "PUT",
+            headers: {
                 "content-type" : "application/json"
             },
-            body : JSON.stringify(user)
-        }).then((res) => res.json());
+            body: JSON.stringify(user)
+        }).then(res => res.json())
     }
 
     function deleteUser(userId) {
