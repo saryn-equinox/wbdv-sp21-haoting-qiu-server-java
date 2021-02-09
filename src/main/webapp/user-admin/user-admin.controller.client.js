@@ -71,14 +71,11 @@ const getSelectedUser = (event) => {
 const updateUser = (event) => {
     if (selectedUser !== null && selectedUser !== undefined) {
         // update selectedUser value
-        selectedUser = {
-            "username" : $usernameFld.val(),
-            "password" : $passwordFld.val(),
-            "lastName" : $lastNameFld.val(),
-            "firstName" : $firstNameFld.val(),
-            "role" : $roleFLd.val(),
-            "_id" : selectedUser._id
-        };
+        selectedUser.username = $usernameFld.val();
+        selectedUser.password =  $passwordFld.val();
+        selectedUser.lastName = $lastNameFld.val();
+        selectedUser.firstName = $firstNameFld.val();
+        selectedUser.role = $roleFLd.val();
 
         // called updateUser function
         userAdminService.updateUser(selectedUser._id, selectedUser)
