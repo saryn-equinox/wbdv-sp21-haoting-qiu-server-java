@@ -15,12 +15,18 @@ public class WidgetService {
     Widget w3 = new Widget(345l, "ABC234", "HEADING", 2, "Widgets for Topic ABC234");
     Widget w4 = new Widget(456l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
     Widget w5 = new Widget(567l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
+    Widget w6 = new Widget(678l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
+    Widget w7 = new Widget(789l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
+    Widget w8 = new Widget(890l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
 
     widgets.add(w1);
     widgets.add(w2);
     widgets.add(w3);
     widgets.add(w4);
     widgets.add(w5);
+    widgets.add(w6);
+    widgets.add(w7);
+    widgets.add(w8);
   }
 
   /**
