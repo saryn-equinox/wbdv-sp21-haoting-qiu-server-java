@@ -50,14 +50,10 @@ public class WidgetService {
    */
   public List<Widget> findWidgetsForTopic(String tid) {
     List<Widget> widgets = new LinkedList<>();
-    for (Widget w : this.widgets)
-      if (w.getTopicId().equals(tid)) {
-        try {
-          widgets.add(w.clone());
-        } catch (CloneNotSupportedException e) {
-          widgets.add(w);
-        }
-      }
+    for (Widget w : this.widgets) {
+      if (w.getTopicId().equals(tid))
+        widgets.add(new Widget(w));
+    }
     return widgets;
   }
 
@@ -68,13 +64,14 @@ public class WidgetService {
    * @return - 1 if successful else 0
    */
   public int updateWidget(String wid, Widget widget) {
-    for (int i = 0; i < widgets.size(); i++)
+    for (int i = 0; i < widgets.size(); i++) {
       if (widgets.get(i).getId() == Long.parseLong(wid)) {
         Widget updatedWidget = new Widget(widget);
         updatedWidget.setId(Long.parseLong(wid));
         widgets.set(i, updatedWidget);
         return 1;
       }
+    }
     return 0;
   }
 
@@ -84,11 +81,12 @@ public class WidgetService {
    * @return - 1 if success else 0
    */
   public int deleteWidget(String wid) {
-    for (Widget w : widgets)
+    for (Widget w : widgets) {
       if (w.getId() == Long.parseLong(wid)) {
         widgets.remove(w);
         return 1;
       }
+    }
     return 0;
   }
 
@@ -105,9 +103,10 @@ public class WidgetService {
    * @return - a widget id equals to the wid
    */
   public Widget findWidgetById(String wid) {
-    for (Widget w : widgets)
+    for (Widget w : widgets) {
       if (w.getId() == Long.parseLong(wid))
         return w;
+    }
     return null;
   }
 }

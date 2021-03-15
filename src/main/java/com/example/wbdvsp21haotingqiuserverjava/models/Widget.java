@@ -1,6 +1,6 @@
 package com.example.wbdvsp21haotingqiuserverjava.models;
 
-public class Widget implements Cloneable {
+public class Widget {
   String name; // Optional name of the widget
   Long id; // Widget's unique identifier
   String type; // Type of the widget, e.g., Heading, List, Paragraph, Image, YouTube, HTML, Link
@@ -188,15 +188,5 @@ public class Widget implements Cloneable {
 
   public void setValue(String value) {
     this.value = value;
-  }
-
-  @Override
-  public Widget clone() throws CloneNotSupportedException {
-    super.clone();
-    return new Widget(this);
-    // (String name, Long id, String type, Long widgetOrder, String text,
-    //                String src, String url, String href, Integer size, Long width, Long height,
-    //                String cssClass, String style, String value, String topicId)
-
   }
 }
