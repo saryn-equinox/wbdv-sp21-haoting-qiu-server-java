@@ -1,33 +1,38 @@
 package com.example.wbdvsp21haotingqiuserverjava.services;
 
 import com.example.wbdvsp21haotingqiuserverjava.models.Widget;
+import com.example.wbdvsp21haotingqiuserverjava.repositories.WidgetRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class WidgetService {
-  List<Widget> widgets = new ArrayList<Widget>();
-  {
-    Widget w1 = new Widget(123l, "ABC123", "HEADING", 1, "Widgets for Topic ABC123");
-    Widget w2 = new Widget(234l, "ABC123", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w3 = new Widget(345l, "ABC234", "HEADING", 2, "Widgets for Topic ABC234");
-    Widget w4 = new Widget(456l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w5 = new Widget(567l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w6 = new Widget(678l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w7 = new Widget(789l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w8 = new Widget(890l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
+//  List<Widget> widgets = new ArrayList<Widget>();
+//  {
+//    Widget w1 = new Widget(123l, "ABC123", "HEADING", 1, "Widgets for Topic ABC123");
+//    Widget w2 = new Widget(234l, "ABC123", "PARAGRAPH", 1, "Lorem Ipsum");
+//    Widget w3 = new Widget(345l, "ABC234", "HEADING", 2, "Widgets for Topic ABC234");
+//    Widget w4 = new Widget(456l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
+//    Widget w5 = new Widget(567l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
+//    Widget w6 = new Widget(678l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
+//    Widget w7 = new Widget(789l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
+//    Widget w8 = new Widget(890l, "ABC345", "PARAGRAPH", 1, "Lorem Ipsum");
+//
+//    widgets.add(w1);
+//    widgets.add(w2);
+//    widgets.add(w3);
+//    widgets.add(w4);
+//    widgets.add(w5);
+//    widgets.add(w6);
+//    widgets.add(w7);
+//    widgets.add(w8);
+//  }
 
-    widgets.add(w1);
-    widgets.add(w2);
-    widgets.add(w3);
-    widgets.add(w4);
-    widgets.add(w5);
-    widgets.add(w6);
-    widgets.add(w7);
-    widgets.add(w8);
-  }
+  @Autowired
+  WidgetRepository repository;
 
   /**
    * Creates a new Widget instance and add it to the existing collection of widgets for a topic whose ID is
@@ -37,10 +42,10 @@ public class WidgetService {
    * @return - new widget
    */
   public Widget createWidgetForTopic(String topicId, Widget widget) {
+
     widget.setTopicId(topicId);
-    widget.setId((new Date()).getTime());
-    widgets.add(widget);
-    return widget;
+//    widget.setId((new Date()).getTime());
+    return repository.save(widget);
   }
 
   /**
@@ -49,12 +54,13 @@ public class WidgetService {
    * @return - list of widgets that belong to the topicId
    */
   public List<Widget> findWidgetsForTopic(String tid) {
-    List<Widget> widgets = new LinkedList<>();
-    for (Widget w : this.widgets) {
-      if (w.getTopicId().equals(tid))
-        widgets.add(new Widget(w));
-    }
-    return widgets;
+//    List<Widget> widgets = new LinkedList<>();
+//    for (Widget w : this.widgets) {
+//      if (w.getTopicId().equals(tid))
+//        widgets.add(new Widget(w));
+//    }
+//    return widgets;
+    return repository.findWidgetsForTopic(tid);
   }
 
   /**
@@ -64,15 +70,19 @@ public class WidgetService {
    * @return - 1 if successful else 0
    */
   public int updateWidget(String wid, Widget widget) {
-    for (int i = 0; i < widgets.size(); i++) {
-      if (widgets.get(i).getId() == Long.parseLong(wid)) {
-        Widget updatedWidget = new Widget(widget);
-        updatedWidget.setId(Long.parseLong(wid));
-        widgets.set(i, updatedWidget);
-        return 1;
-      }
-    }
-    return 0;
+    Widget originalWidget = findWidgetById(wid);
+    widget.setId(originalWidget.getId());
+    repository.save(widget);
+    return 1;
+//    for (int i = 0; i < widgets.size(); i++) {
+//      if (widgets.get(i).getId() == Long.parseLong(wid)) {
+//        Widget updatedWidget = new Widget(widget);
+//        updatedWidget.setId(Long.parseLong(wid));
+//        widgets.set(i, updatedWidget);
+//        return 1;
+//      }
+//    }
+//    return 0;
   }
 
   /**
@@ -81,13 +91,15 @@ public class WidgetService {
    * @return - 1 if success else 0
    */
   public int deleteWidget(String wid) {
-    for (Widget w : widgets) {
-      if (w.getId() == Long.parseLong(wid)) {
-        widgets.remove(w);
-        return 1;
-      }
-    }
-    return 0;
+//    for (Widget w : widgets) {
+//      if (w.getId() == Long.parseLong(wid)) {
+//        widgets.remove(w);
+//        return 1;
+//      }
+//    }
+//    return 0;
+    repository.deleteById(Long.parseLong(wid));
+    return 1;
   }
 
   /**
@@ -95,7 +107,7 @@ public class WidgetService {
    * @return - list of widgets
    */
   public List<Widget> findAllWidgets() {
-    return widgets;
+    return repository.findAllWidgets();
   }
 
   /**
@@ -103,10 +115,11 @@ public class WidgetService {
    * @return - a widget id equals to the wid
    */
   public Widget findWidgetById(String wid) {
-    for (Widget w : widgets) {
-      if (w.getId() == Long.parseLong(wid))
-        return w;
-    }
-    return null;
+    return repository.findWidgetById(Long.parseLong(wid));
+//    for (Widget w : widgets) {
+//      if (w.getId() == Long.parseLong(wid))
+//        return w;
+//    }
+//    return null;
   }
 }

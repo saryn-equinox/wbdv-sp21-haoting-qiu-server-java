@@ -1,8 +1,15 @@
 package com.example.wbdvsp21haotingqiuserverjava.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
-  String name; // Optional name of the widget
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id; // Widget's unique identifier
+
+  String name; // Optional name of the widget
   String type; // Type of the widget, e.g., Heading, List, Paragraph, Image, YouTube, HTML, Link
   Long widgetOrder; // Order with respect to widgets in the same list
   String text; // Plain text useful for heading text, paragraph text, link text, etc
