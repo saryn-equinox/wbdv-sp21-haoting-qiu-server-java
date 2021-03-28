@@ -23,6 +23,9 @@ public class Widget {
   String style; // CSS transformations applied to the widget
   String value; // Some arbitrary initial value interpreted by the widget
   String topicId; // the topicId that this widget belongs to
+  Boolean isOrdered;
+
+
 
   public Widget(String name, Long id, String type, Long widgetOrder, String text,
                 String src, String url, String href, Integer size, Long width, Long height,
@@ -42,6 +45,7 @@ public class Widget {
     this.style = style;
     this.value = value;
     this.topicId = topicId;
+    isOrdered = false;
   }
 
   public Widget(Long id, String topicId, String type, Integer size, String text) {
@@ -50,9 +54,11 @@ public class Widget {
     this.type = type;
     this.size = size;
     this.text = text;
+    isOrdered = false;
   }
 
   public Widget() {
+    isOrdered = false;
   }
 
   /**
@@ -195,5 +201,13 @@ public class Widget {
 
   public void setValue(String value) {
     this.value = value;
+  }
+
+  public Boolean getOrdered() {
+    return isOrdered;
+  }
+
+  public void setOrdered(Boolean ordered) {
+    isOrdered = ordered;
   }
 }
